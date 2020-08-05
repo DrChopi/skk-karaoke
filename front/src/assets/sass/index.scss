@@ -1,0 +1,630 @@
+$color1: #39393A;
+$color2: #297373;
+$color3: #FF8552;
+$color4: #E6E6E6;
+$color5: #E9D758;
+
+* {
+    //transition : all 0.25s;
+    font-family: Roboto;
+}
+
+body {
+    background-color: $color2;
+    background-attachment: fixed;
+    background-size: auto 100vh;
+    background-blend-mode: multiply;
+    scroll-behavior: smooth;
+    padding: 0;
+    margin: 0;
+}
+
+@keyframes pulse {
+    from { height: 60vh; }
+    to { height: 65vh; }
+}
+
+@keyframes menu {
+    from { left: 50vw; opacity: 0.6; }
+    to { left: 30vw; opacity: 1; }
+}
+
+@keyframes menu_button {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+.head {
+    height: 70px;
+    width: 100%;
+    position: absolute;
+    
+    img { 
+        height: 80px;
+    }
+}
+
+.creds {
+   position: fixed;
+   top: 0;
+   left: 0;
+   height: 100vh;
+   width: 100vw;
+   transition: display 0.5s;
+   background-color: rgba($color: $color1, $alpha: 0.8);
+
+   & > div {
+       position: fixed;
+       top: 10vh;
+       left: 10vw;
+       width: 80vw;
+       height: 80vh;
+       border-radius: 3px;
+       background-color: $color2;
+       
+       & > span {
+           position: fixed;
+           top: 50vh;
+           left: 50vw;
+           height: 50px;
+           width: 50px;
+           font-size: 30px;
+           color: $color4;
+           transform: translateX(-50%) translateY(-50%);
+       }
+
+       & > div {
+           display: inline-block;
+           width: 30vw;
+           height: 60vh;
+           padding: 10vh 5vw 10vh 5vw;
+       }
+   }
+   
+   .forms {
+       //background-color: red;
+       float: left;
+
+       h3 {
+           font-size: 30px;
+           color: $color4;
+       }
+
+       label {
+           font-size: 15px;
+           text-transform: uppercase;
+           float: left;
+           color: $color4;
+       }
+
+       input {
+           display: block;
+           width: 90%;
+           padding: 5%;
+           margin-bottom: 5%;
+           border-radius: 3px;
+           border: none;
+       }
+
+       input:focus {
+           //outline: none;
+           outline-color: $color3;
+       }
+
+       button {
+           width: 100%;
+           border-radius: 3px;
+           background-color: $color3;
+           margin: auto;
+           border: none;
+           padding: 5%;
+           color: $color4;
+           font-weight: bold;
+           font-size: 20px;
+       }
+
+       & > form > span {
+           cursor: pointer;
+           color: $color4;
+           float : left;
+
+           &:hover {
+               color: $color3;
+           }
+       }
+   }
+
+   .alternatif {
+       float: right;
+
+        div {
+            margin-top: 30vh;
+            transform: translateY(-50%);
+        }
+
+        button {
+            display: block;
+            cursor: pointer;
+            width: 100%;
+            margin: auto;
+            border-radius: 3px;
+            border: none;
+            height: 50px;
+            margin-bottom: 5%;
+        }
+    }
+}
+
+.screen {
+    & > * {
+        height: 50vh;
+        width: 100%;
+    }
+
+    div {
+        background-attachment: fixed;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: auto 100vw;
+        background-color: $color1;
+        font-size: 300px;
+        text-align: center;
+        line-height: 100vh;
+        vertical-align: middle;
+        color: transparent;
+    }
+
+    div:first-child {
+        height: 100vh;
+        background-clip: text;
+        -webkit-background-clip: text;
+    }
+}
+
+.desc {
+    height: 30vh;
+    padding: 10vh 10vw 10vh 10vw;
+
+    button {
+        position: absolute;
+        left: 50vw;
+        margin-top: -10vh;
+        transform: translateX(-50%) translateY(-50%);
+        height: 10vh;
+        width: 20vw;
+        border: 3px solid $color3;
+        background-color: transparent;
+        color: $color3;
+        font-size: 30px;
+        text-transform: uppercase;
+        transition: background-color 0.2s;
+        cursor: pointer;
+        border-radius: 3px;
+    }
+
+    button:hover {
+        background-color: $color3;
+        color: $color2;
+    }
+}
+
+.account {
+    position: absolute;
+    line-height: 50px;
+    vertical-align: middle;
+    right: 5px;
+    top: 5px;
+    height: 50px;
+    width: 15vw;
+    min-width: 200px;
+    text-decoration: none;
+    color: $color3;
+    text-align: center;
+    font-weight: bold;
+    background-color: transparent;
+    border: 3px solid $color3;
+    transition: background-color 0.2s;
+    border-radius: 3px;
+    
+    & > img {
+        height: 100%;
+        float: left;
+    }
+
+    &:hover {
+        color: $color2;
+        background-color: $color3;
+    }
+}
+
+.play {
+    .back, .join, .go {
+        position: fixed;
+        bottom: 8px;
+        left: 8px;
+        height: 50px;
+        width: 200px;
+        border: 3px solid $color4;
+        color: $color4;
+        background-color: transparent;
+        transition: all 0.5s;
+        cursor: pointer;
+        font-weight: bold;
+    }
+
+    .join {
+        left: 216px;
+    }
+
+    .go {
+        left: 424px;
+    }
+
+    .back:hover, .join:hover, .go:hover {
+        background-color: $color4;
+        color: $color2;
+    }
+
+    .scroller {
+        height: 80vh;
+        width: 80vw;
+        padding-left: 20vw;
+        padding-top: 5px;
+        padding-bottom: 5px;
+       // background-color: blue;
+        position: fixed;
+        display: block;
+        padding: none;
+        text-align: left;
+        top: 10vh;
+       // scroll-behavior: smooth;
+        right: 0;
+        overflow-y: auto;
+
+        &::-webkit-scrollbar {
+            width: 0;
+        }
+
+        .falscroller {
+            position: fixed;
+            right: 0;
+            top: 20vh;
+            width: 5px;
+            background-color: grey;
+            z-index: 1;
+        }
+
+        .falscroller :first-child{
+            width: 5px;
+            background-color: black;
+            color: black;
+            position: absolute;
+            top: 0;
+            right: 0;
+        }
+
+        .focus {
+            height: 90px;
+            width: 50vw;
+            background-color: $color3;
+            border-color: $color3;
+            opacity: 0.9;
+
+            span:nth-child(1) {
+                font-size: 25px;
+            }
+
+            span:nth-child(2) {
+                font-size: 20px;
+            }
+
+            span:nth-child(3) {
+                font-size: 20px;
+            }
+        }
+
+        .previous {
+            height: 80px;
+            width: 45vw;
+            background-color: $color5;
+            border-color: $color5;
+            opacity: 0.6;
+
+            
+            span:nth-child(1) {
+                font-size: 20px;
+            }
+
+            span:nth-child(2) {
+                font-size: 15px;
+            }
+
+            span:nth-child(3) {
+                font-size: 15px;
+            }
+        }
+
+        .next {
+            height: 80px;
+            width: 45vw;
+            background-color: $color5;
+            border-color: $color5;
+            opacity: 0.6;
+
+            span:nth-child(1) {
+                font-size: 20px;
+            }
+
+            span:nth-child(2) {
+                font-size: 15px;
+            }
+
+            span:nth-child(3) {
+                font-size: 15px;
+            }
+        }
+
+        li {
+            transition: width 0.2s;
+            list-style: none;
+            height: 70px;
+            cursor: pointer;
+            background-image: url(https://www.clemson.edu/centers-institutes/writing/global/images/triangles-narrow.png);
+            background-size: 40%;
+            background-position: center;
+            background-blend-mode: multiply;
+            float: right;
+            opacity: 0.4;
+            width: 40vw;
+            text-align: left;
+            background-color: $color4;
+            padding: 5px;
+            margin-top: 2px;
+
+            img {
+                height: 100%;
+                display: inline-block;
+            }
+
+            div {
+                height: 100%;
+                vertical-align: top;
+                display: inline-block;
+                margin-left: 5px;
+                color: $color1;
+
+                span {
+                    display: block;
+                }
+
+                span:nth-child(1) {
+                    font-weight: bold;
+                    font-size: 15px;
+                }
+    
+                span:nth-child(2) {
+                    font-style: italic;
+                    font-size: 10px;
+                }
+    
+                span:nth-child(3) {
+                    font-size: 10px;
+                }
+
+                span:nth-child(4) {
+                    font-size: 10px;
+                }
+
+                hr {
+                     display: inline-block;
+                     width: 25px;
+                     height: 5px;
+                     line-height: 5px;
+                     vertical-align: middle;
+                     border: none;
+                     background-color: $color4;
+                     margin-left: 5px;
+                     //border: 1px solid black;
+                }
+
+                .diff { background-color: $color1; }
+
+                .rest { 
+                    background-color: $color4;
+                    height: 3px;
+                    width: 15px;
+                    margin-left: 8px;
+                }
+            }
+        }
+    }
+
+    .details {
+        height: 10vh;
+        background-color: $color2;
+        opacity: 0.8;
+        border-bottom: 4px solid $color4;
+
+        transition: opacity 0.2s;
+        &:hover {
+            opacity: 1;
+        }
+
+        div {
+            background-color: $color2;
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 20vw;
+            height: 20vh;
+            border-bottom: 4px solid $color4;
+            background-image: url(https://www.clemson.edu/centers-institutes/writing/global/images/triangles-narrow.png);
+            background-size: 30vh;
+            color: $color4;
+
+            ul {
+                position: relative;
+                z-index: 1;
+                padding-left: 2vw;
+                min-width: 40vw;
+
+                img {
+                    width: 150px;
+                    float: left;
+                    margin-right: 20px;
+                }
+
+                li {
+                    list-style: none;
+                    overflow: hidden;
+                    white-space: nowrap;
+                    text-overflow: ellipsis;
+                }
+
+                li:nth-child(2) {
+                    font-size: 25px;
+                    font-weight: bold;
+                }
+
+                li:nth-child(3) {
+                    font-size: 18px;
+                }
+
+                li:nth-child(4) {
+                    font-size: 18px;
+                }
+            }
+        }
+
+        div:after {
+            content: "";
+            position: absolute;
+            
+            background-color: transparent;
+            left: 17vw;
+            height: 30vh;
+            width: 40vw;
+            top: 10vh;
+            border-top-left-radius: 30vh;
+            box-shadow: 0 -20vh 0 0 $color2;
+        }
+
+        div:before {
+            content: "";
+            position: absolute;
+            
+            background-color: transparent;
+            left: 17vw;
+            height: 30vh;
+            width: 40vw;
+            top: 10vh;
+            margin-top: 4px;
+            border-top-left-radius: 30vh;
+            box-shadow: 0 -20vh 0 0 $color4;
+        }
+    }
+
+    .account {
+        top: auto;
+        bottom: 8px;
+        border-radius: 0px;
+    }
+}
+
+.loading {
+    position: fixed;
+    height: 100vh;
+    width: 100vw;
+    background-color: $color3;
+    z-index: 1;
+
+    & > .lcenter {
+        animation-name: pulse;
+        animation-duration: 0.5s;
+        animation-iteration-count: infinite;
+        animation-direction: alternate;
+    }
+}
+
+.menu {
+    position: fixed;
+    height: 100vh;
+    width: 100vw;
+    background-color: $color2;
+    z-index: 1;
+
+    .lcenter {
+        height: 60vh;
+        position: absolute;
+        top: 50vh;
+        left: 50vw;
+        transform: translateX(-50%) translateY(-50%);
+    }
+
+    & > .lcenter {
+        opacity: 0.6;
+        animation-name: menu;
+        animation-duration: 1s;
+        animation-delay: 0.5s;
+        animation-iteration-count: 1;
+        animation-fill-mode: forwards;
+    }
+
+    ul {
+        position: absolute;
+        left: 40vw;
+        transform: translateY(-50%);
+        top: 50vh;
+
+        li {
+            transition: width 0.5s;
+            opacity: 0;
+            list-style: none;
+            margin: 2.5vw;
+            background: linear-gradient(90deg, #EA3952, #8274D4);
+            text-align: right;
+            border-radius: 30px;
+            color: $color4;
+            cursor: pointer;
+            font-weight: bold;
+            font-size: 30px;
+            width: 20vw;
+            padding: 2vh;
+            animation-name: menu_button;
+            animation-duration: 1.5s;
+            animation-delay: 0.5s;
+            animation-iteration-count: 1;
+            animation-fill-mode: forwards;
+        }
+
+        li:hover {
+            width: 30vw;
+        }
+    }
+}
+
+
+/* Extra small devices (phones, 600px and down) */
+@media only screen and (max-width: 600px) {
+    .status span { display: none; }
+}
+
+/* Small devices (portrait tablets and large phones, 600px and up) */
+@media only screen and (min-width: 600px) {
+    .status span { display: none; }
+}
+
+/* Medium devices (landscape tablets, 768px and up) */
+@media only screen and (min-width: 768px) {
+    .status span { display: inline-block; }
+}
+
+/* Large devices (laptops/desktops, 992px and up) */
+@media only screen and (min-width: 992px) {
+    .status span { display: inline-block; }
+}
+
+/* Extra large devices (large laptops and desktops, 1200px and up) */
+@media only screen and (min-width: 1200px) {
+    .status span { display: inline-block; }
+}

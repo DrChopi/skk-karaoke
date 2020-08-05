@@ -1,0 +1,7 @@
+# System
+.git
+node_modules
+package-lock.json
+
+# App
+src/assets/css
