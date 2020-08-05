@@ -26,7 +26,8 @@ export default class Play extends React.Component {
 
         this.state = {
             songs : [],
-            focus : null
+            focus : null,
+            video : null
         }
     }
 
@@ -36,6 +37,7 @@ export default class Play extends React.Component {
 
         console.log(await Utils.get(api + '/list'));
         this.setState({ songs : (await Utils.get(api + '/list')).data, focus : 0 })
+        //console.log(this.state.songs);
 
         let el = window.document.querySelector('.scroller'),
             childs = el.querySelectorAll('li'),
@@ -111,7 +113,8 @@ export default class Play extends React.Component {
                 childs[Math.floor(el.scrollTop/uni) + 2].className = "focus"
                 childs[Math.floor(el.scrollTop/uni) + 3].className = "next"
 
-                this.setState({ focus : (Math.floor(el.scrollTop/uni) + 2) })
+                this.setState({ focus : (Math.floor(el.scrollTop/uni) + 2)%this.state.songs.length })
+                //console.log(this.state.songs[this.state.focus], this.state.focus);
 
                 window.document.body.style.backgroundImage = "url(" + window.document.body.querySelector('.focus img').src + ")"
             }
@@ -120,13 +123,13 @@ export default class Play extends React.Component {
     details (song) {
         //console.log(song);
         let che = [ "kenat", "very easy", "easy", "medium", "hard", "very hard", "insane", "hell", "inhuman", "godlike" ]
-
+        //song = !song ? {} : song 
         return <div>
             <ul>
                 <Lazy api={ api } ressource={ song.icon } />
                 <li><span>{song.name}</span> - <span>{song.artist}</span> [ <span>{ che[song.difficulty - 1] }</span> ]</li>
                 <li><span>Puls {song.speed} - Ronde { Math.floor((60/song.speed)*10)/10 }s</span></li>
-                <li><span>Durée {Math.floor(song.duration/60)}:{Math.floor(song.duration%60)}</span></li>
+                <li><span>Durée {Math.floor(song.duration/60)}:{Math.floor(song.duration%60) < 10 ? '0' + Math.floor(song.duration%60) : Math.floor(song.duration%60)}</span></li>
                 <span></span>
             </ul>
         </div>
@@ -134,6 +137,12 @@ export default class Play extends React.Component {
 
     joinRoom() {
 
+    }
+
+    play() {
+        window.document.querySelector('video').style.display = window.document.querySelector('video').style.display === 'none' ? 'block' : 'none' 
+        this.setState({ video : api + '/music/' + this.state.songs[this.state.focus].icon.replace('png', 'mp4') })
+        window.document.querySelector('video').play()
     }
 
     render() {
@@ -146,13 +155,15 @@ export default class Play extends React.Component {
             <div className="ranking"></div>
             <a href="/"><button className="back">Back</button></a>
             <a onClick={ this.joinRoom.bind(this) }><button className="join">Join room</button></a>
-            <a onClick={ this.joinRoom.bind(this) }><button className="go">Play</button></a>
+            <a onClick={ this.play.bind(this) }><button className="go">Play</button></a>
             <ul className="scroller">
                     <div className="falscroller"><span>0</span></div>
                     { this.state.songs.map((el, key) => this.song(el, key)) }
                     { this.state.songs.slice(0, 11).map((el, key) => this.song(el, key)) }
             </ul>
             <div className="footer"></div>
+            <video className="video" controls style={{ display : 'none' }} src={ this.state.video } onEnded={ () => {  window.document.querySelector('video').style.display = window.document.querySelector('video').style.display === 'none' ? 'block' : 'none' }} autoPlay={ true }>
+            </video>
         </div>
     }
 }

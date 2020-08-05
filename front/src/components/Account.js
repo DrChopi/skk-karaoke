@@ -4,7 +4,7 @@ import Utils from '../modules/utils'
 import Lazy from './Lazy'
 
 let api = Utils.parseCookie().api_url,
-    res = "Crowds.png"
+    res = "logo.png"
 
 export default class Account extends React.Component {
     constructor(props) {

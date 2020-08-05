@@ -17,7 +17,7 @@ export default class Home extends React.Component {
             <Nav data={ this.props.data } />
             <Screen txt={ "SKK" } img={ "https://artfiles.alphacoders.com/433/43310.jpg" } />
             <div className="desc">
-                <a href="/room/0"><button>Play</button></a>
+                <a onClick={ () => ( this.props.data.user === null ) ? window.document.querySelector('.head > a').click() : window.document.location.pathname = "/room/0" }><button>Play</button></a>
                 <p>Et culpa Lorem laborum nulla. Nisi non sit velit ea consequat labore do anim consequat do. Officia ad esse ullamco esse nisi adipisicing labore occaecat. 
                    Deserunt culpa in voluptate duis cillum tempor excepteur enim.</p>
             </div>

@@ -16,9 +16,9 @@ export default class Lazy extends React.Component {
         let close = setInterval(() => {
             if (document.readyState === 'complete') {
               this.setState({ src : this.props.api + '/image/' + this.props.ressource })
-              clearInterval(close);
+              //clearInterval(close);
             }
-          }, 100)
+          }, 10)
     }
 
     render() {

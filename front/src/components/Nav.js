@@ -6,7 +6,7 @@ import Creds from './Creds'
 import Account from './Account'
 
 let api = Utils.parseCookie().api_url,
-    res = "Crowds.png"
+    res = "logo.png"
 
 export default class Loading extends React.Component {
     constructor(props) {

@@ -2,13 +2,21 @@ from flask import Flask, request, abort, send_file
 from flask_cors import CORS
 from modules import Mongo, Validator, Jwt, Img
 
-import pprint, json, re, subprocess
+import pprint, json, re, subprocess, os
 
-mng = Mongo('mongodb://localhost:27017/', "skk", 20)
+os.environ['DB_USER'] = ( os.getenv('DB_USER'), '' ) [ os.getenv('DB_USER') == None ]
+os.environ['DB_PASS'] = ( os.getenv('DB_PASS'), '' ) [ os.getenv('DB_PASS') == None ]
+os.environ['DB_HOST'] = ( os.getenv('DB_HOST'), 'localhost' ) [ os.getenv('DB_HOST') == None ]
+os.environ['DB_PORT'] = ( os.getenv('DB_PORT'), '27017' ) [ os.getenv('DB_PORT') == None ]
+os.environ['DB_NAME'] = ( os.getenv('DB_NAME'), 'skk' ) [ os.getenv('DB_NAME') == None ]
+os.environ['DB_POOL'] = ( os.getenv('DB_POOL'), '20' ) [ os.getenv('DB_POOL') == None ]
+os.environ['API_SECRET'] = ( os.getenv('API_SECRET'), "awVYjjzt7ssPDRxwmrIY" ) [ os.getenv('API_SECRET') == None ]
+
+mng = Mongo('mongodb://' + ( os.getenv('DB_USER') + ':' + os.getenv('DB_PASS') + '@', '') [ os.getenv('DB_USER') == '' and os.getenv('DB_PASS') == '' ] + os.getenv('DB_HOST') + ':' + os.getenv('DB_PORT'), os.getenv('DB_NAME'), int(os.getenv('DB_POOL')))
 Img.prepare(mng)
 app = Flask(__name__)
 CORS(app)
-secret = "awVYjjzt7ssPDRxwmrIY"
+secret = os.getenv('API_SECRET')
 
 data_model = {
     "user" : {

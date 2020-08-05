@@ -4,9 +4,10 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "set PORT=80 && react-scripts start",
-    "sass": "sass --watch ./src/assets/sass:./src/assets/css --style compressed"
+    "test" : "echo \"Error: no test specified\" && exit 1",
+    "dev" : "set PORT=80 && react-scripts start",
+    "sass" : "sass --watch ./src/assets/sass:./src/assets/css --style compressed",
+    "start" : "sass --watch ./src/assets/sass:./src/assets/css --style compressed && react-scripts build && serve -s build -l 80"
   },
   "dependencies": {
     "axios": "^0.19.2",
@@ -15,7 +16,8 @@
     "react-dom": "^16.13.1",
     "react-scripts": "3.4.1",
     "sass": "^1.26.7",
-    "socket.io-client": "^2.3.0"
+    "socket.io-client": "^2.3.0",
+    "serve": "^11.3.2"
   },
   "author": "",
   "license": "ISC",
